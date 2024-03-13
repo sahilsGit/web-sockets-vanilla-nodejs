@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Socket Client</title>
+  </head>
+  <body>
+    <div>
+      <script>
+        const socket = new WebSocket(`ws://localhost:3000`);
+
+        socket.onopen = () => {
+          console.log("socket is connected");
+          console.log("sending");
+
+          const data = JSON.stringify({
+            id: 2322342,
+            name: "John K.",
+            address: {
+              street: "New street",
+              number: 123432123,
+            },
+          });
+        };
+        socket.onmessage = () => {};
+        socket.onerror = (err) => console.log("socket error has occurred", err);
+        socket.onclose = (e) => console.log("socket is disconnected");
+      </script>
+    </div>
+  </body>
+</html>
